@@ -1,6 +1,7 @@
 package com.example.rssreadsample.presentation
 
 import android.app.Application
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -18,10 +19,13 @@ class ArticleListViewModel(
 
     val articleList: MutableLiveData<List<Article>> by lazy { MutableLiveData<List<Article>>() }
 
-
     init {
         viewModelScope.launch {
-            articleList.value = articleRepository.articleList(articleType)
+            try {
+                articleList.value = articleRepository.articleList(articleType)
+            } catch (exception: Exception) {
+                Toast.makeText(application, "通信エラーが発生しました", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }
