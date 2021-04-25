@@ -29,10 +29,11 @@ class ArticleListFragment(articleType: ArticleType) : Fragment() {
         adapter = ArticleListRecyclerViewAdapter(requireContext())
         recyclerView = view.findViewById(R.id.recyclerView)
         recyclerView.layoutManager = layoutManager()
+        recyclerView.adapter = adapter
 
         articleListViewModel.articleList.observe(viewLifecycleOwner, Observer {
             adapter.dataSet = it
-            recyclerView.adapter = adapter
+            adapter.notifyDataSetChanged()
         })
     }
 

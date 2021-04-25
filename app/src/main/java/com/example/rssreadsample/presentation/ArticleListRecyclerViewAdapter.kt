@@ -16,7 +16,7 @@ import com.example.rssreadsample.domain.model.Article
 
 class ArticleListRecyclerViewAdapter(private val context: Context) : RecyclerView.Adapter<ArticleListRecyclerViewAdapter.ViewHolder>() {
 
-    lateinit var dataSet: List<Article>
+    var dataSet: List<Article> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return if (viewType == 0) {
