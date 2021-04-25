@@ -5,7 +5,7 @@ import org.simpleframework.xml.ElementList
 import org.simpleframework.xml.Root
 
 @Root(strict = false)
-class HatenaXmlResponse(
+class ArticlesResponse(
         @field: Element(name = "channel")
         var channel: Channel? = null,
 
@@ -40,6 +40,9 @@ class HatenaXmlResponse(
             var date: String? = null,
 
             @field: Element(name = "bookmarkcount", required = false)
-            var bookmarkCount: Int? = null
+            var bookmarkCount: Int? = null,
+
+            @field: Element(name = "imageurl", required = false)
+            var imageUrl: String? = null
     )
 }
