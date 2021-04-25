@@ -29,7 +29,9 @@ class ArticleListRecyclerViewAdapter(private val context: Context) : RecyclerVie
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val article = dataSet[position]
         holder.titleTextView.text = article.title
-        holder.imageView.load(article.imageUrl)
+        holder.imageView.load(article.imageUrl) {
+            error(android.R.drawable.ic_delete)
+        }
         holder.cardView.setOnClickListener {
             showWebBrowser(article.webSiteUrl)
         }
