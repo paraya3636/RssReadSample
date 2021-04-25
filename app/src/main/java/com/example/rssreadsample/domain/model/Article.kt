@@ -3,10 +3,10 @@ package com.example.rssreadsample.domain.model
 import java.util.*
 
 data class Article(
-        val Title: String,
-        val Description: String,
-        val ImageUrl: String,
-        val Date: Date,
-        val WebSiteUrl: String
+        val title: String,
+        val description: String,
+        val imageUrl: String,
+        val date: Date,
+        val webSiteUrl: String
 ) {
 }
