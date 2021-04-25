@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rssreadsample.R
 import com.example.rssreadsample.domain.model.ArticleType
@@ -27,10 +28,26 @@ class ArticleListFragment(articleType: ArticleType) : Fragment() {
 
         adapter = ArticleListRecyclerViewAdapter(requireContext())
         recyclerView = view.findViewById(R.id.recyclerView)
+        recyclerView.layoutManager = layoutManager()
 
         articleListViewModel.articleList.observe(viewLifecycleOwner, Observer {
             adapter.dataSet = it
             recyclerView.adapter = adapter
         })
+    }
+
+    private fun layoutManager(): GridLayoutManager {
+        return GridLayoutManager(requireContext(), 2).apply {
+            val lookup = object : GridLayoutManager.SpanSizeLookup() {
+                override fun getSpanSize(position: Int): Int {
+                    return if (position == 0) {
+                        2
+                    } else {
+                        1
+                    }
+                }
+            }
+            spanSizeLookup = lookup
+        }
     }
 }

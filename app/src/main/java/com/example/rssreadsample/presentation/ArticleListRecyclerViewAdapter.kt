@@ -19,7 +19,11 @@ class ArticleListRecyclerViewAdapter(private val context: Context) : RecyclerVie
     lateinit var dataSet: List<Article>
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_article, parent, false))
+        return if (viewType == 0) {
+            ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_article_two_span, parent, false))
+        } else {
+            ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_article_one_span, parent, false))
+        }
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -32,6 +36,14 @@ class ArticleListRecyclerViewAdapter(private val context: Context) : RecyclerVie
     }
 
     override fun getItemCount(): Int = dataSet.size
+
+    override fun getItemViewType(position: Int): Int {
+        return if (position == 0) {
+            0
+        } else {
+            1
+        }
+    }
 
     private fun showWebBrowser(webPageUrl: String) {
         context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(webPageUrl)))
