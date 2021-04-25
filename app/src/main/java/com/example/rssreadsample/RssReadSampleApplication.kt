@@ -1,6 +1,7 @@
 package com.example.rssreadsample
 
 import android.app.Application
+import com.example.rssreadsample.domain.model.ArticleType
 import com.example.rssreadsample.presentation.ArticleListViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -21,6 +22,6 @@ class RssReadSampleApplication : Application() {
     }
 
     private val module = module {
-        viewModel { ArticleListViewModel(get()) }
+        viewModel { (articleType: ArticleType) -> ArticleListViewModel(get(), articleType) }
     }
 }
