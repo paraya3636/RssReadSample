@@ -13,11 +13,12 @@ import com.example.rssreadsample.domain.model.ArticleType
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
-class ArticleListFragment(articleType: ArticleType) : Fragment() {
+class ArticleListFragment : Fragment() {
 
     private val articleListViewModel by viewModel<ArticleListViewModel> { parametersOf(articleType) }
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: ArticleListRecyclerViewAdapter
+    private lateinit var articleType: ArticleType
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_article_list, container, false)
@@ -49,6 +50,14 @@ class ArticleListFragment(articleType: ArticleType) : Fragment() {
                 }
             }
             spanSizeLookup = lookup
+        }
+    }
+
+    companion object {
+        fun createFragment(type: ArticleType): ArticleListFragment {
+            return ArticleListFragment().apply {
+                articleType = type
+            }
         }
     }
 }
