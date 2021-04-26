@@ -9,7 +9,7 @@ class ArticleTabAdapter(activity: FragmentActivity) : FragmentStateAdapter(activ
     override fun getItemCount(): Int = ArticleType.values().size
 
     override fun createFragment(position: Int): Fragment {
-        return ArticleListFragment.createFragment(articleTypeByPosition(position))
+        return ArticleListFragment.newInstance(articleTypeByPosition(position))
     }
 
     private fun articleTypeByPosition(position: Int): ArticleType {

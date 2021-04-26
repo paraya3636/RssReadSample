@@ -54,7 +54,7 @@ class ArticleListFragment : Fragment() {
     }
 
     companion object {
-        fun createFragment(type: ArticleType): ArticleListFragment {
+        fun newInstance(type: ArticleType): ArticleListFragment {
             return ArticleListFragment().apply {
                 articleType = type
             }
