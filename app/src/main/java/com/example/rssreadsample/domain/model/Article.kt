@@ -8,5 +8,4 @@ data class Article(
         val imageUrl: String,
         val date: Date,
         val webSiteUrl: String
-) {
-}
+) 
