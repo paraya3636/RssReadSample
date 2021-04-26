@@ -5,7 +5,7 @@ import org.simpleframework.xml.ElementList
 import org.simpleframework.xml.Root
 
 @Root(strict = false)
-class ArticlesResponse(
+class HatenaArticlesResponse(
         @field: Element(name = "channel")
         var channel: Channel? = null,
 
