@@ -32,7 +32,7 @@ class ArticleListFragment : Fragment() {
         recyclerView.layoutManager = layoutManager()
         recyclerView.adapter = adapter
 
-        articleListViewModel.articleList.observe(viewLifecycleOwner, Observer {
+        articleListViewModel.articleList().observe(viewLifecycleOwner, Observer {
             adapter.dataSet = it
             adapter.notifyDataSetChanged()
         })
