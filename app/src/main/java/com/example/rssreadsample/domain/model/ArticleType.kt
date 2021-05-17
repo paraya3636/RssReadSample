@@ -1,6 +1,8 @@
 package com.example.rssreadsample.domain.model
 
-enum class ArticleType {
+import java.io.Serializable
+
+enum class ArticleType : Serializable {
     General,
     Social,
     Economics,

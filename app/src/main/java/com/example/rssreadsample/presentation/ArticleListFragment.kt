@@ -18,7 +18,7 @@ class ArticleListFragment : Fragment() {
     private val articleListViewModel by viewModel<ArticleListViewModel> { parametersOf(articleType) }
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: ArticleListRecyclerViewAdapter
-    private lateinit var articleType: ArticleType
+    private val articleType: ArticleType by lazy { requireArguments().getSerializable(ArticleType::javaClass.name) as ArticleType }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_article_list, container, false)
@@ -56,7 +56,7 @@ class ArticleListFragment : Fragment() {
     companion object {
         fun newInstance(type: ArticleType): ArticleListFragment {
             return ArticleListFragment().apply {
-                articleType = type
+                arguments = Bundle().apply { putSerializable(ArticleType::javaClass.name, type) }
             }
         }
     }
