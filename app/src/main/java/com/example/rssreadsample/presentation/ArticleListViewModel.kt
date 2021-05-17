@@ -17,9 +17,9 @@ class ArticleListViewModel(
         private val articleRepository: ArticleRepository,
         private val articleType: ArticleType
 ) : AndroidViewModel(application) {
-    
+
     fun articleList(): LiveData<List<Article>> = articleList
-    private val articleList: MutableLiveData<List<Article>> by lazy { MutableLiveData<List<Article>>() }
+    private val articleList: MutableLiveData<List<Article>> = MutableLiveData<List<Article>>()
 
     init {
         viewModelScope.launch {
